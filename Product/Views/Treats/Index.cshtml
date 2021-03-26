@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+} 
+
+@using Product.Models;
+@model List<Product.Models.Treat>
+
+
+@if (Model.Any())
+{
+  <ul>
+    @foreach (Treat treat in Model)
+    {
+      <li>@Html.ActionLink($"{treat.ProductName}", "Details", new { id = treat.TreatId })</li>
+    }
+  </ul>
+} 
+else
+{
+  <h3>Sorry! No treats are available yet!</h3>
+}
+
+<p>@Html.ActionLink("Add new treat", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
