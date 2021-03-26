@@ -20,6 +20,19 @@ else
   <h3>Sorry! No treats are available yet!</h3>
 }
 
-<p>@Html.ActionLink("Add new treat", "Create")</p>
+@if (User.Identity.IsAuthenticated)
+{
+  <p>@Html.ActionLink("Add new treat", "Create")</p>
+}
+else 
+{
+  <hr/>
+  <h3>To Add or Update a new treat, please create an account here:</h3> 
+  <p>@Html.ActionLink("Create an account", "Register", "Account")</p>
+  <h3>Or Log in:</h3>
+  <p>@Html.ActionLink("Log in", "Login", "Account")</p>
+}
+
+
 
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
