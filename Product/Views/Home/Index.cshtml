@@ -1,5 +1,15 @@
+@{
+  Layout = "_Layout";
+} 
 
+<h1>Welcome</h1>
+<p>@Html.ActionLink("See all treats", "Index", "Treats")</p>
+<p>@Html.ActionLink("See all flavors", "Index", "Flavors")</p>
 
+<h3>For more options please create an account:</h3>
+<p>@Html.ActionLink("Create an account", "Index", "Register")</p>
+<h3>Or Log in:</h3>
+<p>@Html.ActionLink("Log in", "Login")</p>
 
 
  
