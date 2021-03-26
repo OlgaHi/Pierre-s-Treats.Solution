@@ -4,7 +4,7 @@ namespace Product.Models
 {
   public class Treat
   {
-    public Item()
+    public Treat()
     {
       this.Flavors = new HashSet<FlavorTreat>();
     }
