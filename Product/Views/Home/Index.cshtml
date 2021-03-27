@@ -11,6 +11,12 @@
 <h3>Or Log in:</h3>
 <p>@Html.ActionLink("Log in", "Login", "Account")</p>
 
-
+@if (User.Identity.IsAuthenticated)
+{
+  @using (Html.BeginForm("LogOff", "Account"))
+  {
+    <input type="submit" value="Log out" />
+  }
+}
 
  
