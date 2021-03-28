@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+} 
+
+@model Product.Models.Treat
+
+<h2>Are you sure you want to delete this treat?</h2>
+
+@Html.DisplayNameFor(model => model.ProductName): @Html.DisplayFor(model => model.ProductName)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+<p>@Html.ActionLink("Back to treats", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
