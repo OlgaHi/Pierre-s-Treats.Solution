@@ -73,7 +73,12 @@ namespace Product.Controllers
     {
       if (FlavorId != 0)
       {
-        _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
+        var joinTable = _db.FlavorTreat
+        .Any(join => join.TreatId == treat.TreatId && join.FlavorId == FlavorId);
+        if (!joinTable)
+          {
+            _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
+          }
       }
       _db.Entry(treat).State = EntityState.Modified;
       _db.SaveChanges();
