@@ -1,0 +1,32 @@
+
+@using Product.Models;
+@model List<Product.Models.Flavor>
+
+
+@if (Model.Any())
+{
+  <ul>
+    @foreach (Flavor flavor in Model)
+    {
+      <li>@Html.ActionLink($"{flavor.FlavorType}", "Details", new { id = flavor.FlavorId })</li>
+    }
+  </ul>
+} 
+else
+{
+  <h3>Sorry! No flavors are available yet!</h3>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+  <p>@Html.ActionLink("Add new flavor", "Create")</p>
+}
+else 
+{
+  <hr/>
+  <h3>To Add, Update or Delete a new flavor, please create an account here:</h3> 
+  <p>@Html.ActionLink("Create an account", "Register", "Account")</p>
+  <h3>Or Log in:</h3>
+  <p>@Html.ActionLink("Log in", "Login", "Account")</p>
+}
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
