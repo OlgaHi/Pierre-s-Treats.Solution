@@ -37,11 +37,8 @@ namespace Product.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Treat treat, int FlavorId)
+    public ActionResult Create(Treat treat, int FlavorId)
     {
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var currentUser = await _userManager.FindByIdAsync(userId);
-      treat.User = currentUser;
       _db.Treats.Add(treat);
       if (FlavorId != 0)
       {
@@ -114,16 +111,11 @@ namespace Product.Controllers
     {
       if (FlavorId != 0)
       {
-        var joinTable = _db.FlavorTreat
-        .Any(join => join.TreatId == treat.TreatId && join.FlavorId == FlavorId);
-        if (!joinTable)
-          {
-            _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
-          }
+      _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
-    }
+    } 
 
     [HttpPost]
     public ActionResult DeleteFlavor(int joinId)

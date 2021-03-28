@@ -37,12 +37,10 @@ namespace Product.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Flavor flavor, int TreatId)
+    public ActionResult Create(Flavor flavor, int TreatId)
     {
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var currentUser = await _userManager.FindByIdAsync(userId);
-      flavor.User = currentUser;
       _db.Flavors.Add(flavor);
+      _db.SaveChanges();
       if (TreatId != 0)
       {
         _db.FlavorTreat.Add(new FlavorTreat() { TreatId = TreatId, FlavorId = flavor.FlavorId });
@@ -50,5 +48,11 @@ namespace Product.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    
+
+
+    
+
   }
 }

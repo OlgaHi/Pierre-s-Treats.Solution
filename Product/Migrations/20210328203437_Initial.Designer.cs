@@ -9,7 +9,7 @@ using Product.Models;
 namespace Product.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20210326212108_Initial")]
+    [Migration("20210328203437_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -220,7 +220,12 @@ namespace Product.Migrations
                     b.Property<string>("FlavorType")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.HasKey("FlavorId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Flavors");
                 });
@@ -314,6 +319,15 @@ namespace Product.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Product.Models.Flavor", b =>
+                {
+                    b.HasOne("Product.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Product.Models.FlavorTreat", b =>
