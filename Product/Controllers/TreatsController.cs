@@ -40,6 +40,7 @@ namespace Product.Controllers
     public ActionResult Create(Treat treat, int FlavorId)
     {
       _db.Treats.Add(treat);
+      _db.SaveChanges();
       if (FlavorId != 0)
       {
         _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
