@@ -32,8 +32,7 @@ namespace Product.Controllers
     [Authorize]
     public ActionResult Create()
     {
-    ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "ProductName");
-    return View();
+      return View();
     }
 
     [HttpPost]
@@ -62,7 +61,6 @@ namespace Product.Controllers
     public ActionResult Edit(int id)
     {
       var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
-      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "ProductName") ;
       return View(thisFlavor);
     }
 

@@ -51,7 +51,7 @@ Please follow this steps:
  - Run the following command: dotnet build
  - Run the following command to execute this compiled code: dotnet run
  - In browser navigate to http://localhost:5000
- 
+
 
 <details>
   <summary>Expand Installation</summary>
@@ -122,7 +122,7 @@ Import Database Structure with Entity Framework Core
 * C#
 * .NET 5
 * ASP.NET Core MVC
-* Entity
+* Entity Framework Core
 * MySQL
 * MySQL Workbench
 * HTTP
