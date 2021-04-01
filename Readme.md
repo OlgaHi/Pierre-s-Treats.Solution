@@ -128,6 +128,7 @@ Import Database Structure with Entity Framework Core
 * .NET 5
 * ASP.NET Core MVC
 * Entity Framework Core
+* ASP.NET Identity 
 * MySQL
 * MySQL Workbench
 * HTTP
